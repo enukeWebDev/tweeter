@@ -1,0 +1,36 @@
+.new-tweet {
+  width: 100%;
+  
+}
+
+.new-tweet h2 {
+  margin-top: 1em;
+  margin-right: 1em;
+  margin-bottom: 1em;
+  margin-left: 0em;
+  font-family: "Bungee", cursive;
+  font-size: 25px;
+  border-width: .5px;
+
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form textarea {
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+  background-color: inherit;
+  border: none;
+  border-bottom: solid purple 5px;
+  outline-width: 0;
+}
+
+form .borders {
+  display: flex;
+  justify-content: space-between;
+  font-family: "Bungee", sans-serif;
+}
+
