@@ -30,8 +30,7 @@ body {
 
  main {
    width: 90%;
-   align-items: center;
+   padding: 1rem;
+   margin: 0 auto;
    background-color: inherit;
-   display: flex;
-   align-items: center;
  }

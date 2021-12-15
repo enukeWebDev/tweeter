@@ -64,14 +64,41 @@
     <main class="container">
       <section class="new-tweet">
         <h2>Tweet me...</h2>
-        <form>
+        <form methods="POST" action="/tweets/">
           <label for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text"></textarea>
           <div class="borders">
-            <button type="submit">Tweet</button>
+            <button class="submit-button" type="submit">Tweet</button>
             <output name="counter" class="counter" for="tweet-text">140</output>
           </div>
         </form>
+      </section>
+
+      <!-- Creating the Tweets-->
+      <section class="tweet-container">
+        <article class="one-tweet">
+          <div class="tweet-header">
+            <div class="tweet-er">
+              <img class="tweet-er-pic" src="https://i.imgur.com/xlyv1mT.jpeg" />
+              <p>Francis</p>
+            </div>
+            <div class="at-name">
+              <p>@Bro</p>
+            </div>
+          </div>
+
+          <p class="tweets">I love Crypto - I will buy a Lambo when my coin goes to the moon!</p>
+          <footer>
+            <div>
+              <p class="tweets-day">10 days ago</p>
+            </div>
+            <div class="actions">
+              <i class="fas fa-retweet"></i>
+              <i class="far fa-comment"></i>
+              <i class="far fa-heart"></i>
+            </div>
+          </footer>
+        </article>
       </section>
     </main>
   </body>
