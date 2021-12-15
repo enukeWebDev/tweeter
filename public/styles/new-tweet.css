@@ -21,21 +21,16 @@ form {
 
 form textarea {
   padding-bottom: 1em;
-  margin: 0 0 24px;
-  height: 15px;
-  width: 1724px;
+  margin-bottom: 1em;
   background-color: inherit;
   border: none;
   border-bottom: solid purple 5px;
   outline-width: 0;
-  justify-content: center;
 }
-
 
 form .borders {
   display: flex;
   justify-content: space-between;
   font-family: "Bungee", sans-serif;
-  
 }
 
