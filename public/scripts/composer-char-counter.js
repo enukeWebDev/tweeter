@@ -1,3 +1,9 @@
+/*
+This file is solely responsible for counting the characters when writing a Tweet.
+The counter (number) will turn to 'red ink with negative sign' when the typed
+character is more than 140 characters.
+*/
+
 $(document).ready(function() {
   let tweetMessage = $('#tweet-text');
   let counter = $('.counter');
