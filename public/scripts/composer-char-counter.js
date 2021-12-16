@@ -5,18 +5,19 @@ character is more than 140 characters.
 */
 
 $(document).ready(function() {
-  let tweetMessage = $('#tweet-text');
-  let counter = $('.counter');
+  //add message here
+  let $tweetMessage = $('#tweet-text');
+  let $counter = $('.counter');
 
-  tweetMessage.on('keyup', (event) => {
-    let tweetLength = event.target.value.length;
-    counter.val(140 - tweetLength);
+  $tweetMessage.on('keyup', (event) => {
+    let $tweetLength = event.target.value.length;
+    $counter.val(140 - $tweetLength);
 
-    if (tweetLength > 140) {
-      counter.css('color', '#FF0000');
+    if ($tweetLength > 140) {
+      $counter.css('color', '#FF0000');
 
     } else {
-      counter.css('color', '#545149');
+      $counter.css('color', '#545149');
     }
   });
 });
