@@ -4,7 +4,10 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+
+
 // Fake data taken from initial-tweets.json
+/*
 const data = [
   {
     "user": {
@@ -30,27 +33,16 @@ const data = [
     "created_at": 1461113959088
   }
 ]
-
+ 
 $(document).ready(function() {
   renderTweets(data);
 });
+ 
+*/
+$(document).ready(function() {
 
-const renderTweets = function(tweets) {
-  // loops through tweets
-  // calls createTweetElement for each tweet
-  // takes return value and appends it to the tweets container
-
-  const $tweetContainer = $('#tweet-container');
-
-  for (const tweet of tweets) {
-    const $newTweet = createTweetElement(tweet);
-    $tweetContainer.prepend($newTweet);
-  }
-
-}
-
-const createTweetElement = function(tweet) {
-  let $tweet = `<article class="one-tweet">
+  const createTweetElement = function(tweet) {
+    let $tweet = $(`<article class="one-tweet">
   <div class="tweet-header">
     <div class="tweet-er">
       <img class="tweet-er-pic" src="${tweet.user.avatars}" />
@@ -69,33 +61,67 @@ const createTweetElement = function(tweet) {
       <i class="far fa-heart"></i>
     </div>
   </footer>
-</article> `;
+</article> `);
 
-  return $tweet;
-}
+    return $tweet;
+  };
 
-/*
-To handle the form submission ourselves and send POST request asynchronously:
-- Add an event listener 
-- Prevent the default behaviour of the submit event (prevent reloading the page)
+  const renderTweets = function(tweets) {
+    // loops through tweets
+    // calls createTweetElement for each tweet
+    // takes return value and appends it to the tweets container
 
-Form Data:
-- The jQuery .serialize() function turns a set of form data into a quesry string
-- Serializes data will be sent to the server in the data field of the AJAX POST request
-- .serializeArray will create an array of objects - ready to be encoded as a JSON string
-*/
+    const $tweetContainer = $('#tweet-container');
 
-const $formSubmitProcess = $('.tweet-form');
-$formSubmitProcess.on('submit', function(event) {
-  event.preventDefault();
+    for (const tweet of tweets) {
+      const $newTweet = createTweetElement(tweet);
+      $tweetContainer.prepend($newTweet);
+    }
+  };
 
-  let data = $(this).serialize();
-  let queryString = $(this).serializeArray()[0];
+  /*
+  This function is responsible for:
+  - fetching tweets from the http://localhost:8080/tweets page
+  - will use jQuery to make request to /tweets and receive the 
+  array of tweets as JSON
+  */
+  const loadTweets = () => {
+    $.ajax({
+      url: '/tweets',
+      method: 'GET'
+    })
+      .then((data) => {
+        renderTweets(data);
+      })
+      .catch((error) => console.log(error));
+  };
+  loadTweets();
 
-  $.ajax({
-    url: '/tweets',
-    type: 'POST',
-    data: data,
 
+
+  /*
+  To handle the form submission ourselves and send POST request asynchronously:
+  - Add an event listener 
+  - Prevent the default behaviour of the submit event (prevent reloading the page)
+  
+  Form Data:
+  - The jQuery .serialize() function turns a set of form data into a quesry string
+  - Serializes data will be sent to the server in the data field of the AJAX POST request
+  - .serializeArray will create an array of objects - ready to be encoded as a JSON string
+  */
+
+  const $formSubmitProcess = $('.tweet-form');
+  $formSubmitProcess.on('submit', function(event) {
+    event.preventDefault();
+
+    let data = $(this).serialize();
+    let queryString = $(this).serializeArray()[0];
+
+    $.ajax({
+      url: '/tweets',
+      type: 'POST',
+      data: data,
+
+    });
   });
 });
