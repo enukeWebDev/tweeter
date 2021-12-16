@@ -108,6 +108,12 @@ $(document).ready(function() {
   - The jQuery .serialize() function turns a set of form data into a quesry string
   - Serializes data will be sent to the server in the data field of the AJAX POST request
   - .serializeArray will create an array of objects - ready to be encoded as a JSON string
+  
+  Form Validation:
+  - The user should be given an error that their tweet contetnt is too
+  long or that it is not present(empty/null)
+  - The form should not be cleared
+  - The form should not submit
   */
 
   const $formSubmitProcess = $('.tweet-form');
@@ -121,7 +127,13 @@ $(document).ready(function() {
       url: '/tweets',
       type: 'POST',
       data: data,
-
+      success: function(resp, status, xhr) {
+        $('counter').text(140);
+        $('#tweet-text').val('');
+        loadTweets();
+      },
+      error: function(xhr, status, errorThrown) { },
+      complete: function() { }
     });
   });
 });
