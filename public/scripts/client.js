@@ -110,8 +110,6 @@ $(document).ready(function() {
 
     let data = $(this).serialize();
     let queryString = $(this).serializeArray()[0].value;
-    //console.log(queryString);
-
 
     let $error = $('#error-alert');
     let $errorMessage = $('#error-alert p');
@@ -120,7 +118,6 @@ $(document).ready(function() {
       $errorMessage.text('Warning!!! Your tweet is too long - please try again!');
 
       $error.slideDown();
-      // console.log('Warning!!! Your tweet is too long - please try again!')
 
     } else if (!queryString || !queryString.replace(/\s/g, '').length) {
       $errorMessage.text('Warning!!! You cannot tweet and empty message - please try again!');
