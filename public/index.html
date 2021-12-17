@@ -13,6 +13,8 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Bungee&family=Dancing+Script&family=Dosis:wght@400;600&family=Source+Sans+Pro:wght@200&display=swap"
       rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <!-- External Fonts (cdnjs.com) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -21,14 +23,9 @@
 
     <!-- App CSS -->
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
-
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
-
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
-
-
 
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -65,16 +62,23 @@
 
     <!-- Page-specific (main) content here - this is where to write your Tweets -->
     <main class="container">
+      <div class="custom-alert" id="error-alert" role="alert">
+        <i class="fas fa-exclamation-triangle"></i>
+        <p class="error-message"></p>
+        <i class="fas fa-exclamation-triangle"></i>
+      </div>
       <section class="new-tweet">
         <h2>Tweet me...</h2>
         <form class="tweet-form">
           <!-- <form methods="POST" action="/tweets/"> -->
           <label for="tweet-text">What are you humming about?</label>
-          <div class="error-warnings alert alert-warning" role="alert">
-            <div class=" errors">
-              <p class="error-message"></p>
-            </div>
-          </div>
+          <!--  <div class="error-warnings alert alert-warning" role="alert"> -->
+          <!-- <div class="error-warnings">
+            <div class="errors"> -->
+          <!-- <p class="error-message"></p> -->
+          <!-- <i class="fas fa-exclamation-triangle"></i> -->
+          <!-- </div>
+          </div> -->
           <textarea name="text" id="tweet-text"></textarea>
           <div class="borders">
             <button class="submit-button" type="submit">Tweet</button>
@@ -90,35 +94,3 @@
   </body>
 
 </html>
-
-<!-- Creating the Tweets
-      <section class="tweet-container">
-        <article class="one-tweet">
-          <div class="tweet-header">
-            <div class="tweet-er">
-              <img class="tweet-er-pic" src="https://i.imgur.com/xlyv1mT.jpeg" />
-              <p>Francis</p>
-            </div>
-            <div class="at-name">
-              <p>@Bro</p>
-            </div>
-          </div>
-          <p class="tweets">I love Crypto - I will buy a Lambo when my coin goes to the moon!</p>
-          <footer>
-            <div>
-              <p class="tweets-day">10 days ago</p>
-            </div>
-            <div class="actions">
-              <i class="fas fa-retweet"></i>
-              <i class="far fa-comment"></i>
-              <i class="far fa-heart"></i>
-            </div>
-          </footer>
-        </article>
-      </section>
-    </main>
-  </body>
-
-</html>
-
--->

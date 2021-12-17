@@ -52,6 +52,9 @@
   margin-bottom: 10px;
   padding: 10px;
 }
+.one-tweet:hover {
+  box-shadow: 5px 10px violet;
+}
 .tweet-header {
   display: flex;
   justify-content: space-between;
@@ -89,4 +92,19 @@ footer {
   justify-content: space-between;
   margin-top: 15px;
 }
+
+.custom-alert{
+  background-color: transparent;
+  border: 2px solid red;
+  padding: 0.2em;
+  color: red;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.error-message {
+  display: inline-block;
+} 
+
 

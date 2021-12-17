@@ -5,7 +5,7 @@ character is more than 140 characters.
 */
 
 $(document).ready(function() {
-  //add message here
+
   let $tweetMessage = $('#tweet-text');
   let $counter = $('.counter');
 

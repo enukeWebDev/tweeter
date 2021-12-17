@@ -76,8 +76,6 @@ $(document).ready(function() {
   };
   loadTweets();
 
-
-
   /*
   To handle the form submission ourselves and send POST request asynchronously:
   - Add an event listener 
@@ -95,6 +93,16 @@ $(document).ready(function() {
   - The form should not submit
   */
 
+  $('#error-alert').hide();
+
+  $('#tweet-text').on('change keyup paste', function() {
+    let tweetData = $('#tweet-text').val().length
+    if (tweetData > 0 || tweetData < 140) {
+      console.log('tweetData', tweetData);
+      $('#error-alert').slideUp();
+    }
+  });
+
   const $formSubmitProcess = $('.tweet-form');
   $formSubmitProcess.on('submit', function(event) {
     event.preventDefault();
@@ -102,19 +110,21 @@ $(document).ready(function() {
 
     let data = $(this).serialize();
     let queryString = $(this).serializeArray()[0].value;
-    console.log('data', data, 'string', queryString);
-    let error = $('.error-warning');
-    let $errorMessage = $('.error-message');
+    //console.log(queryString);
+
+
+    let $error = $('#error-alert');
+    let $errorMessage = $('#error-alert p');
 
     if (queryString.length > 140) {
       $errorMessage.text('Warning!!! Your tweet is too long - please try again!');
-      error.slideDown();
-      console.log('Warning!!! Your tweet is too long - please try again!')
+
+      $error.slideDown();
+      // console.log('Warning!!! Your tweet is too long - please try again!')
 
     } else if (!queryString || !queryString.replace(/\s/g, '').length) {
       $errorMessage.text('Warning!!! You cannot tweet and empty message - please try again!');
-      error.slideDown();
-      console.log('Warning!!! You cannot tweet and empty message - please try again!');
+      $error.slideDown();
 
     } else {
       $.ajax({
