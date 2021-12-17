@@ -16,3 +16,13 @@ This repository is the starter code for the project: Students will fork and clon
 
 - Express
 - Node 5.10.x or above
+
+## Some Screenshots of the Project After Completion
+
+1. ![tweet main page] https://github.com/enukeWebDev/tweeter/blob/master/docs/tweet.png?raw=true
+
+2. ![showing warning for more than 140 characters entered] https://github.com/enukeWebDev/tweeter/blob/master/docs/negative_counter.png?raw=true
+
+3. ![showing the hover effect on text area] https://github.com/enukeWebDev/tweeter/blob/master/docs/hover_effect.png?raw=true
+
+4. ![empty tweets with warning] https://github.com/enukeWebDev/tweeter/blob/master/docs/empty_tweet_warning.png?raw=true
