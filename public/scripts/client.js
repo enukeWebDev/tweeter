@@ -4,43 +4,22 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+//Prevent XSS with Escaping - function provide in Compass
+const escape = function(str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
 
-
-// Fake data taken from initial-tweets.json
 /*
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd"
-    },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-]
- 
-$(document).ready(function() {
-  renderTweets(data);
-});
- 
+- Function that will generate the DOM structure for a tweet - given a tweet object.
 */
 $(document).ready(function() {
 
+  /*
+  Takes in a tweet object and is responsible for returning a tweet
+  <article> element containing the entire HTML structure of the tweet
+  */
   const createTweetElement = function(tweet) {
     let $tweet = $(`<article class="one-tweet">
   <div class="tweet-header">
@@ -120,20 +99,36 @@ $(document).ready(function() {
   $formSubmitProcess.on('submit', function(event) {
     event.preventDefault();
 
-    let data = $(this).serialize();
-    let queryString = $(this).serializeArray()[0];
 
-    $.ajax({
-      url: '/tweets',
-      type: 'POST',
-      data: data,
-      success: function(resp, status, xhr) {
-        $('counter').text(140);
-        $('#tweet-text').val('');
-        loadTweets();
-      },
-      error: function(xhr, status, errorThrown) { },
-      complete: function() { }
-    });
+    let data = $(this).serialize();
+    let queryString = $(this).serializeArray()[0].value;
+    console.log('data', data, 'string', queryString);
+    let error = $('.error-warning');
+    let $errorMessage = $('.error-message');
+
+    if (queryString.length > 140) {
+      $errorMessage.text('Warning!!! Your tweet is too long - please try again!');
+      error.slideDown();
+      console.log('Warning!!! Your tweet is too long - please try again!')
+
+    } else if (!queryString || !queryString.replace(/\s/g, '').length) {
+      $errorMessage.text('Warning!!! You cannot tweet and empty message - please try again!');
+      error.slideDown();
+      console.log('Warning!!! You cannot tweet and empty message - please try again!');
+
+    } else {
+      $.ajax({
+        url: '/tweets',
+        type: 'POST',
+        data: data,
+        success: function(resp, status, xhr) {
+          $('.counter').text(140);
+          $('#tweet-text').val('');
+          loadTweets();
+        },
+        error: function(xhr, status, errorThrown) { },
+        complete: function() { }
+      });
+    }
   });
 });

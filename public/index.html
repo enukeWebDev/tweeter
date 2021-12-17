@@ -67,14 +67,19 @@
     <main class="container">
       <section class="new-tweet">
         <h2>Tweet me...</h2>
-        <form class="tweet-form"></form>
-        <!-- <form methods="POST" action="/tweets/"> -->
-        <label for="tweet-text">What are you humming about?</label>
-        <textarea name="text" id="tweet-text"></textarea>
-        <div class="borders">
-          <button class="submit-button" type="submit">Tweet</button>
-          <output name="counter" class="counter" for="tweet-text">140</output>
-        </div>
+        <form class="tweet-form">
+          <!-- <form methods="POST" action="/tweets/"> -->
+          <label for="tweet-text">What are you humming about?</label>
+          <div class="error-warnings alert alert-warning" role="alert">
+            <div class=" errors">
+              <p class="error-message"></p>
+            </div>
+          </div>
+          <textarea name="text" id="tweet-text"></textarea>
+          <div class="borders">
+            <button class="submit-button" type="submit">Tweet</button>
+            <output name="counter" class="counter" for="tweet-text">140</output>
+          </div>
         </form>
       </section>
 
